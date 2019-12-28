@@ -1,5 +1,49 @@
 package com.martinsanguin.inventarios.be;
 
-public class Rol {
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="rol")
+public class Rol {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name = "description", length = 50)
+	private String description;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idRol")
+	private List<User> users;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	
+	
 }

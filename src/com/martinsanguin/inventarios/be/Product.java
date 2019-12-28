@@ -1,5 +1,114 @@
 package com.martinsanguin.inventarios.be;
 
-public class Product {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Product")
+public class Product {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name="title", length=50)
+	private String title;
+	
+	@Column(name="details", length=100)
+	private String details;
+	
+	@Column(name="for_vegan")
+	private Boolean for_vegan;
+	
+	@Column(name="for_celiac")
+	private Boolean for_celiac;
+	
+	@Column(name="for_dietetic")
+	private Boolean for_dietetic;
+	
+	@Column(name="for_vegetarian")
+	private Boolean for_vegetarian;
+	
+	@Column(name="quantity")
+	private Integer quantity;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idBrand")
+	private Brand brand;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idProductType")
+	private ProductType productType;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDetails() {
+		return details;
+	}
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	public Boolean getFor_vegan() {
+		return for_vegan;
+	}
+	public void setFor_vegan(Boolean for_vegan) {
+		this.for_vegan = for_vegan;
+	}
+	public Boolean getFor_celiac() {
+		return for_celiac;
+	}
+	public void setFor_celiac(Boolean for_celiac) {
+		this.for_celiac = for_celiac;
+	}
+	public Boolean getFor_dietetic() {
+		return for_dietetic;
+	}
+	public void setFor_dietetic(Boolean for_dietetic) {
+		this.for_dietetic = for_dietetic;
+	}
+	public Boolean getFor_vegetarian() {
+		return for_vegetarian;
+	}
+	public void setFor_vegetarian(Boolean for_vegetarian) {
+		this.for_vegetarian = for_vegetarian;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	public Brand getBrand() {
+		return brand;
+	}
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+	public ProductType getProductType() {
+		return productType;
+	}
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
+	}
+	
+	
 }
