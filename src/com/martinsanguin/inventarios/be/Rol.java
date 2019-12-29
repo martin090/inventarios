@@ -23,7 +23,7 @@ public class Rol {
 	@Column(name = "description", length = 50)
 	private String description;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "idRol")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "rol")
 	private List<User> users;
 	
 	public Integer getId() {
