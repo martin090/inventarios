@@ -1,7 +1,10 @@
 package com.martinsanguin.inventarios.service;
 
-import com.martinsanguin.inventarios.be.Product;
+import java.util.List;
+
+import com.martinsanguin.inventarios.dto.ProductDTO;
 
 public interface ProductService {
-	void saveNewProduct();
+	void saveProduct();
+	List<ProductDTO> getAllProducts();
 }

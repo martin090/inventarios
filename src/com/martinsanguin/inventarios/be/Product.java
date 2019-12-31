@@ -11,9 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.martinsanguin.inventarios.dto.ProductDTO;
+import com.martinsanguin.inventarios.service.GenericDTOConverter;
+
 @Entity
 @Table(name="Product")
-public class Product {
+public class Product implements GenericDTOConverter<ProductDTO> {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -108,6 +111,22 @@ public class Product {
 	}
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
+	}
+	@Override
+	public ProductDTO convertMeToDto() {
+		ProductDTO dto = new ProductDTO();
+		dto.setId(this.id);
+		dto.setDetails(this.details);
+		dto.setFor_celiac(this.for_celiac);
+		dto.setFor_dietetic(this.for_dietetic);
+		dto.setFor_vegan(this.for_vegan);
+		dto.setFor_vegetarian(this.for_vegetarian);
+		dto.setQuantity(this.quantity);
+		if(this.brand != null)
+			dto.setIdBrand(this.brand.getId());
+		if(this.productType != null)
+			dto.setIdProductType(this.productType.getId());
+		return dto;
 	}
 	
 	

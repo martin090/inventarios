@@ -1,5 +1,8 @@
 package com.martinsanguin.inventarios.dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,12 @@ public class ProductDaoImpl implements ProductDao {
 	public void merge(Product product) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Product> findAll() {
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		return c.list();
 	}
 
 }
