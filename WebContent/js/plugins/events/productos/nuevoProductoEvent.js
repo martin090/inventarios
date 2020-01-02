@@ -1,5 +1,6 @@
-function NuevoProductoEvent(div){
+function NuevoProductoEvent(div,callback){
 	this.div = div;
+	this.callback = callback;
 	this.pathHtml = "html/productos/nuevoProducto.html";
 	this.service = new NuevoProductoService();
 }
@@ -27,20 +28,22 @@ NuevoProductoEvent.prototype.createProduct = function(){
 		quantity: GETOBJETC.getJqObjectById(this.div,"quantity").val(),
 		idProductType: 1,
 		idBrand: 1,
-		for_vegan: GETOBJETC.getJqObjectById(this.div,"forVegan").checked,
-		for_celiac: GETOBJETC.getJqObjectById(this.div,"forCeliac").checked,
-		for_dietetic: GETOBJETC.getJqObjectById(this.div,"forDietetic").checked,
-		for_vegetarian: GETOBJETC.getJqObjectById(this.div,"forVegetarian").checked
+		for_vegan: GETOBJETC.getJqObjectById(this.div,"forVegan").prop('checked'),
+		for_celiac: GETOBJETC.getJqObjectById(this.div,"forCeliac").prop('checked'),
+		for_dietetic: GETOBJETC.getJqObjectById(this.div,"forDietetic").prop('checked'),
+		for_vegetarian: GETOBJETC.getJqObjectById(this.div,"forVegetarian").prop('checked')
 	};
 	
 	this.service.createProduct(newProduct,$.proxy(this.closePage,this));
 };
 
 NuevoProductoEvent.prototype.closePage = function(){
+	this.callback();
 	CHANGEVIEW.toggleViewForm("#viewContainer");
+
 };
 
-NuevoProductoEvent.init = function(){
-	var nuevoProductoEvent = new NuevoProductoEvent("nuevoProducto");
+NuevoProductoEvent.init = function(callback){
+	var nuevoProductoEvent = new NuevoProductoEvent("nuevoProducto",callback);
 	nuevoProductoEvent.draw();
 }

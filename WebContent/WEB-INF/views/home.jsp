@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Material icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <!-- Estilos inventarios -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
     <title>Inventarios</title>
   </head>
-  <body>
+  <body id="bodyInventarios">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <a class="navbar-brand" href="/inventarios">Aby</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +39,14 @@
 	    </form>
 	  </div>
 	</nav>
+	<div id="wrapperAlertDiv">
+		<div id="alertDiv" class="alert alert-dismissible fade show" role="alert" style="display:none;">
+		  <strong id="alertTitle"> </strong> <span id="alertMessages"> </span>
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	</div>
 	<div id="viewContainer"></div>
 	<div id="formContainer"></div>
 
@@ -52,6 +62,10 @@
     <script type="text/javascript" src="js/plugins/services/productos/productosService.js"></script>
     <script type="text/javascript" src="js/plugins/events/productos/nuevoProductoEvent.js"></script>
     <script type="text/javascript" src="js/plugins/services/productos/nuevoProductoService.js"></script>
+    
+    <script>
+    	$('.toast').toast({autohide: false})
+    </script>
     
   </body>
 </html>

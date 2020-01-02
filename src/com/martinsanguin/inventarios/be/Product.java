@@ -1,6 +1,5 @@
 package com.martinsanguin.inventarios.be;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,11 +43,11 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	@Column(name="quantity")
 	private Integer quantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idBrand")
 	private Brand brand;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idProductType")
 	private ProductType productType;
 	
