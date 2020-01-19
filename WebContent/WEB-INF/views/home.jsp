@@ -62,10 +62,5 @@
     <script type="text/javascript" src="js/plugins/services/productos/productosService.js"></script>
     <script type="text/javascript" src="js/plugins/events/productos/nuevoProductoEvent.js"></script>
     <script type="text/javascript" src="js/plugins/services/productos/nuevoProductoService.js"></script>
-    
-    <script>
-    	$('.toast').toast({autohide: false})
-    </script>
-    
   </body>
 </html>

@@ -115,6 +115,7 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	public ProductDTO convertMeToDto() {
 		ProductDTO dto = new ProductDTO();
 		dto.setId(this.id);
+		dto.setTitle(this.title);
 		dto.setDetails(this.details);
 		dto.setFor_celiac(this.for_celiac);
 		dto.setFor_dietetic(this.for_dietetic);

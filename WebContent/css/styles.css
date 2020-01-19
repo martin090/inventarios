@@ -2,3 +2,7 @@ ul#options li{
 	display:inline;
 	margin-right: 2%;
 }
+
+.handPointer{
+	cursor: pointer;
+}

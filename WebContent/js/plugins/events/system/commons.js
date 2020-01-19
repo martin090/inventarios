@@ -22,6 +22,10 @@ GETOBJETC.getJqObjectById = function(div,id){
 	return $("#" + div + "-" + id);
 };
 
+GETOBJETC.getJqObjectByClass = function(div,id){
+	return $("." + div + "-" + id);
+};
+
 function MESSAGE(){
 };
 
@@ -36,13 +40,12 @@ MESSAGE.showResponseMessage = function(response){
 	
 	$('#alertTitle').text(response.title);
 	
-	var listaMensajes = "<ul>";
+	var listaMensajes = "";
 	for (var i = 0; i < response.messages.length; i++) {
-		listaMensajes += "<li>" + response.messages[i] + "</li>";
+		listaMensajes += response.messages[i] + "<br>";
 	}
-	listaMensajes += "</ul>";
 	
-	$('#alertMessages').html(response.messages);
+	$('#alertMessages').html(listaMensajes);
 	
 	$('#alertDiv').show();
 	
@@ -57,7 +60,7 @@ MESSAGE.showResponseMessage = function(response){
 			  </button>
 			</div>
 		  `);
-	})
+	});
 }
 
 MESSAGE.ok = function(){

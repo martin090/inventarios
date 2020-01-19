@@ -28,5 +28,24 @@ public class ResponseDTO {
 		this.level = level;
 	}
 	
+	public ResponseDTO() {
+		
+	}
+	
+	public ResponseDTO(EnumResponseDTOLevel level) {
+		super();
+		this.title = "";
+		this.messages = new ArrayList<String>();
+		this.level = level;
+	}
+	
+	public ResponseDTO(String title, List<String> messages, EnumResponseDTOLevel level) {
+		super();
+		this.title = title;
+		this.messages = messages;
+		this.level = level;
+	}
+	
+	
 	
 }

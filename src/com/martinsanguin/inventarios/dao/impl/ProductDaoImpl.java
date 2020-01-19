@@ -2,14 +2,17 @@ package com.martinsanguin.inventarios.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.martinsanguin.inventarios.be.Product;
+import com.martinsanguin.inventarios.dao.GenericHibernateDao;
 import com.martinsanguin.inventarios.dao.ProductDao;
 
 @Repository
@@ -17,32 +20,28 @@ import com.martinsanguin.inventarios.dao.ProductDao;
 public class ProductDaoImpl implements ProductDao {
 
 	@Autowired
-	SessionFactory sessionFactory;
+	GenericHibernateDao<Product> daoService;
 	
+	@Transactional(readOnly = false)
 	@Override
-	public Product findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void save(Product product) {
+		this.daoService.save(product);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public void save(Product product) {
-		Session s = sessionFactory.getCurrentSession();
-		s.save(product);
-
-	}
-
-	@Override
 	public void merge(Product product) {
-		// TODO Auto-generated method stub
-
+		this.daoService.merge(product);
 	}
 
 	@Override
 	public List<Product> findAll() {
-		Criteria c = sessionFactory.getCurrentSession().createCriteria(Product.class);
-		return c.list();
+		return this.daoService.findAll(Product.class);
+	}
+	
+	@Override
+	public Product findById(Integer id) {
+		return this.daoService.findById(id,Product.class);
 	}
 
 }

@@ -11,6 +11,7 @@ public class ProductDTO {
 	private Integer quantity;
 	private Integer idBrand;
 	private Integer idProductType;
+	private ResponseDTO message;
 	public Integer getId() {
 		return id;
 	}
@@ -70,6 +71,12 @@ public class ProductDTO {
 	}
 	public void setIdProductType(Integer idProductType) {
 		this.idProductType = idProductType;
+	}
+	public ResponseDTO getMessage() {
+		return message;
+	}
+	public void setMessage(ResponseDTO message) {
+		this.message = message;
 	}
 	
 	

@@ -64,12 +64,10 @@ public class ProductServiceImpl implements ProductService {
 			
 			response.setLevel(EnumResponseDTOLevel.OK);
 			response.setTitle("Success");
-			response.getMessages().add("Product saved!");
+			response.getMessages().add("Product saved.");
 			
 			return response;
 		}
-			
-			
 	}
 
 	@Override
@@ -79,6 +77,60 @@ public class ProductServiceImpl implements ProductService {
 			dtos.add(product.convertMeToDto());
 		}
 		return dtos;
+	}
+
+	@Transactional(readOnly = false)
+	@Override
+	public ResponseDTO updateProduct(ProductDTO dto) {
+		ResponseDTO response = new ResponseDTO();
+		
+		if(dto.getTitle() == null || dto.getTitle().trim().equals(""))
+			response.getMessages().add("Title can not be empty.");
+		if(dto.getDetails() == null || dto.getDetails().trim().equals(""))
+			response.getMessages().add("Details can not be empty.");
+		if(dto.getQuantity() == null)
+			response.getMessages().add("You must indicate the quantity");
+		if(dto.getIdBrand() == null)
+			response.getMessages().add("You must indicate the brand");
+		if(dto.getIdProductType() == null)
+			response.getMessages().add("You must indicate the product type");
+		
+		if(response.getMessages().size() != 0)
+			return response;
+		else {
+			Product product = this.productDao.findById(dto.getId());
+			product.setTitle(dto.getTitle());
+			product.setDetails(dto.getDetails());
+			product.setQuantity(dto.getQuantity());
+			
+			Brand brand = new Brand();
+			brand.setId(dto.getIdBrand());
+			product.setBrand(brand);
+			
+			ProductType productType = new ProductType();
+			productType.setId(dto.getIdProductType());
+			product.setProductType(productType);
+			
+			product.setFor_celiac(dto.getFor_celiac());
+			product.setFor_dietetic(dto.getFor_dietetic());
+			product.setFor_vegan(dto.getFor_vegan());
+			product.setFor_vegetarian(dto.getFor_vegetarian());
+			
+			this.productDao.merge(product);
+			
+			response.setLevel(EnumResponseDTOLevel.OK);
+			response.setTitle("Success");
+			response.getMessages().add("Product updated.");
+			
+			return response;
+		}
+	}
+
+	@Override
+	public ProductDTO getProductById(Integer id) {
+		ProductDTO dto = this.productDao.findById(id).convertMeToDto();
+		dto.setMessage(new ResponseDTO(EnumResponseDTOLevel.OK));
+		return dto;
 	}
 
 
