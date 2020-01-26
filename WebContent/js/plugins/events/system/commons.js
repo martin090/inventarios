@@ -94,3 +94,63 @@ MESSAGE.alert = function(message){
 MESSAGE.error = function(message){
 	
 }
+
+function PRODUCTLISTMANAGER(){
+	
+}
+
+PRODUCTLISTMANAGER.renderProductList = function(comp,data,clickeableCallback){
+	if(!comp)
+		return;
+	
+	comp.html("");
+	for ( var clave in data) {
+		comp.append(`
+				<div id="renderProductList-watchProductClick-` + data[clave].id + `" class="card handPointer">
+				<div class="card-header handPointer"> <h5>` +
+				`<div class="d-flex flex-row">
+				<div class="p-2">`
+				+ data[clave].title +
+				`</div>
+				<div class="ml-auto p-2">`
+				+ "Cantidad: " + data[clave].quantity +
+				`</div>`
+				+
+				`</h5></div>
+				<div class="card-body">
+				<div class="d-flex flex-row">
+				<div class="p-2">
+				<div class="card-title"> ` + data[clave].details  + `</div>
+				</div>
+				<div class="ml-auto p-2">
+				<p class="card-text"> ` + 
+				"<ul id='options'>" +
+			    	(data[clave].for_vegan ? "<li>" + "Vegan: " + PRODUCTLISTMANAGER.formatIconOptionYes(data[clave].for_vegan) + "</li>" : "") +
+			    	(data[clave].for_celiac ? "<li>" + "Celiac: " + PRODUCTLISTMANAGER.formatIconOptionYes(data[clave].for_celiac) + "</li>" : "") +
+			    	(data[clave].for_dietetic ? "<li>" + "Diatetic: " + PRODUCTLISTMANAGER.formatIconOptionYes(data[clave].for_dietetic) + "</li>" : "") +
+			    	(data[clave].for_vegetarian ? "<li>" + "Vegetarian: " + PRODUCTLISTMANAGER.formatIconOptionYes(data[clave].for_vegetarian) + "</li>" : "") +
+				"</ul>" +
+				`</p>
+				</div>
+				</div>
+				</div>
+		`);
+		GETOBJETC.getJqObjectById(null,"renderProductList-watchProductClick-"+data[clave].id).click($.proxy(clickeableCallback,self,data[clave].id));
+		GETOBJETC.getJqObjectById(null,"renderProductList-watchProductClick-"+data[clave].id).mouseover(			
+				function standOutDiv(){
+					$(this).css("background-color", "#f9faaf");
+				}
+		);
+		GETOBJETC.getJqObjectById(null,"renderProductList-watchProductClick-"+data[clave].id).mouseleave(			
+				function standOutDiv(){
+					$(this).css("background-color", "#FFFFFF");
+				}
+		);
+	}
+	
+};
+
+PRODUCTLISTMANAGER.formatIconOptionYes = function(value){
+	if(value)
+		return "<i class='material-icons'>check</i>";
+};

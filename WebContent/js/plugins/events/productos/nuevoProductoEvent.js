@@ -60,7 +60,8 @@ NuevoProductoEvent.prototype.createProduct = function(){
 };
 
 NuevoProductoEvent.prototype.closePage = function(){
-	this.callback();
+	if(this.callback)
+		this.callback();	
 	CHANGEVIEW.toggleViewForm("#viewContainer");
 
 };
