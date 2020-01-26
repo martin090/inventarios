@@ -19,7 +19,10 @@ function GETOBJETC(){
 };
 
 GETOBJETC.getJqObjectById = function(div,id){
-	return $("#" + div + "-" + id);
+	if(div)
+		return $("#" + div + "-" + id);
+	else
+		return $("#" + id);
 };
 
 GETOBJETC.getJqObjectByClass = function(div,id){
@@ -63,14 +66,31 @@ MESSAGE.showResponseMessage = function(response){
 	});
 }
 
-MESSAGE.ok = function(){
+MESSAGE.ok = function(message){
 	
 };
 
-MESSAGE.alert = function(){
+MESSAGE.alert = function(message){
+	$('#alertDiv').addClass('alert-warning');
+	$('#alertTitle').text(message);
+	
+	$('#alertDiv').show();
+	
+	$('#alertDiv').alert();
+	
+	$('#alertDiv').on('closed.bs.alert', function () {
+		  $('#wrapperAlertDiv').append(`
+		  	<div id="alertDiv" class="alert alert-dismissible fade show" role="alert" style="display:none;">
+			  <strong id="alertTitle"> </strong> <span id="alertMessages"> </span>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		  `);
+	});
 	
 };
 
-MESSAGE.error = function(){
+MESSAGE.error = function(message){
 	
 }

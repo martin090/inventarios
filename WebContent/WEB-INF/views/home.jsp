@@ -33,9 +33,9 @@
 	         <a class="nav-link" onclick="ProductosEvent.init()">Productos<span class="sr-only"></span></a>
 	      </li>
 	    </ul>
-	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	    <form id="searchForm" class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" id="inputSearch" type="search" placeholder="Search for products or sells" aria-label="Search">
+	      <button type="button" id="mainSearchBtn" class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	    </form>
 	  </div>
 	</nav>
@@ -62,5 +62,16 @@
     <script type="text/javascript" src="js/plugins/services/productos/productosService.js"></script>
     <script type="text/javascript" src="js/plugins/events/productos/nuevoProductoEvent.js"></script>
     <script type="text/javascript" src="js/plugins/services/productos/nuevoProductoService.js"></script>
+    <script type="text/javascript" src="js/plugins/events/searchs/generalSearchEvent.js"></script>
+    <script type="text/javascript" src="js/plugins/services/searchs/generalSearchService.js"></script>
+    
+    <script>
+	    $(document).ready(function(){
+	    	$("#searchForm").submit(function(){
+	    		return false;
+	    	});
+			GETOBJETC.getJqObjectById(null,"mainSearchBtn").button().unbind().click($.proxy(GeneralSearchEvent.executeSearch,this));
+	    });
+	</script>
   </body>
 </html>

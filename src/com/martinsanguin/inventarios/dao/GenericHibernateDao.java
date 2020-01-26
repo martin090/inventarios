@@ -29,6 +29,10 @@ public class GenericHibernateDao<T>  {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	public String getLikeCharacter() {
+		return "%";
+	}
+	
 	public Session getSession(){
 		return this.sessionFactory.getCurrentSession();
 	}

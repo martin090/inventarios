@@ -1,12 +1,11 @@
 package com.martinsanguin.inventarios.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-
-import org.hibernate.Criteria;
-import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +41,20 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public Product findById(Integer id) {
 		return this.daoService.findById(id,Product.class);
+	}
+	
+	@Override
+	public List<Product> findByFilters(String[] filters){
+		List<Criterion> criterions = new ArrayList<Criterion>();
+		for (String filter : filters) {
+			criterions.add(Restrictions.or(
+					Restrictions.like("title", daoService.getLikeCharacter()+filter+daoService.getLikeCharacter()),
+					Restrictions.like("details", daoService.getLikeCharacter()+filter+daoService.getLikeCharacter())
+				));
+			//criterions.add(Restrictions.like("brand.description", daoService.getLikeCharacter()+filter+daoService.getLikeCharacter()));
+			//criterions.add(Restrictions.like("producttype.description", daoService.getLikeCharacter()+filter+daoService.getLikeCharacter()));
+		}
+		return this.daoService.findByCriteria(criterions, Product.class);
 	}
 
 }
