@@ -11,6 +11,7 @@ public class ProductDTO {
 	private Integer quantity;
 	private Integer idBrand;
 	private Integer idProductType;
+	private Boolean enable;
 	private ResponseDTO message;
 	public Integer getId() {
 		return id;
@@ -71,6 +72,12 @@ public class ProductDTO {
 	}
 	public void setIdProductType(Integer idProductType) {
 		this.idProductType = idProductType;
+	}
+	public Boolean getEnable() {
+		return enable;
+	}
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 	public ResponseDTO getMessage() {
 		return message;

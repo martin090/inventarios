@@ -59,6 +59,13 @@ NuevoProductoEvent.prototype.createProduct = function(){
 		this.service.createProduct(product,$.proxy(this.closePage,this));
 };
 
+NuevoProductoEvent.prototype.disableProduct = function(){
+	if(this.idToModified != 0 && this.idToModified){
+		
+	}
+		
+};
+
 NuevoProductoEvent.prototype.closePage = function(){
 	if(this.callback)
 		this.callback();	

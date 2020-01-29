@@ -22,7 +22,7 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	@Column(name="id")
 	private Integer id;
 	
-	@Column(name="title", length=50)
+	@Column(name="title", length=50, nullable = false)
 	private String title;
 	
 	@Column(name="details", length=100)
@@ -40,7 +40,7 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	@Column(name="for_vegetarian")
 	private Boolean for_vegetarian;
 	
-	@Column(name="quantity")
+	@Column(name="quantity", nullable = false)
 	private Integer quantity;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -50,6 +50,9 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idProductType")
 	private ProductType productType;
+	
+	@Column(name="enable", nullable = false)
+	private Boolean enable;
 	
 	public Integer getId() {
 		return id;
@@ -111,6 +114,12 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
+	public Boolean getEnable() {
+		return enable;
+	}
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
+	}
 	@Override
 	public ProductDTO convertMeToDto() {
 		ProductDTO dto = new ProductDTO();
@@ -122,6 +131,7 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 		dto.setFor_vegan(this.for_vegan);
 		dto.setFor_vegetarian(this.for_vegetarian);
 		dto.setQuantity(this.quantity);
+		dto.setEnable(this.enable);
 		if(this.brand != null)
 			dto.setIdBrand(this.brand.getId());
 		if(this.productType != null)

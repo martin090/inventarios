@@ -23,13 +23,13 @@
 	
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
+	      <li class="nav-item active handPointer">
 	        <a class="nav-link" onclick="ResumenEvent.init()">Resumen <span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item">
+	      <li class="nav-item handPointer">
 	         <a class="nav-link">Ventas<span class="sr-only"></span></a>
 	      </li>
-	      <li class="nav-item">
+	      <li class="nav-item handPointer">
 	         <a class="nav-link" onclick="ProductosEvent.init()">Productos<span class="sr-only"></span></a>
 	      </li>
 	    </ul>
