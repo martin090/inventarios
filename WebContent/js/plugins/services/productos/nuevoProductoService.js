@@ -35,6 +35,21 @@ NuevoProductoService.prototype.updateProduct = function(product,callback){
 	});
 };
 
+NuevoProductoService.prototype.disableProduct = function(id,callback){
+	$.ajax({
+		type: "POST",
+		url: "http://localhost:8080/inventarios/Products/disable/"+id,
+		success: function(response){
+			MESSAGE.showResponseMessage(response);
+			if(response.level === "OK")
+				callback();
+		},
+		error: function(){
+			alert("Ocurrió un error al intentar inhabilitar el producto.");
+		}
+	});
+};
+
 NuevoProductoService.prototype.getProductById = function(id,callback){
 	$.ajax({
 		type: "GET",

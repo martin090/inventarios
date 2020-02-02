@@ -52,7 +52,10 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	private ProductType productType;
 	
 	@Column(name="enable", nullable = false)
-	private Boolean enable;
+	private boolean enable;
+	
+	@Column(name="code", nullable = false, length=45)
+	private String code;
 	
 	public Integer getId() {
 		return id;
@@ -114,11 +117,17 @@ public class Product implements GenericDTOConverter<ProductDTO> {
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
-	public Boolean getEnable() {
+	public boolean isEnable() {
 		return enable;
 	}
-	public void setEnable(Boolean enable) {
+	public void setEnable(boolean enable) {
 		this.enable = enable;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
 	}
 	@Override
 	public ProductDTO convertMeToDto() {

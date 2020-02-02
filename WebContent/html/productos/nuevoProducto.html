@@ -1,47 +1,48 @@
 <div class="container-fluid">
 	<h2 id="{{id}}-titleForm">Nuevo producto</h2>
 	<form>
-	  <div class="form-group">
-	    <label for="{{id}}-title">Tiltle:</label>
-	    <input type="text" class="form-control" id="{{id}}-title" aria-describedby="emailHelp" placeholder="Which product it's?">
-	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-	  </div>
-	  <div class="form-group">
-	    <label for="{{id}}-details">Details:</label>
-	    <input type="text" class="form-control" id="{{id}}-details" placeholder="Here, you can be more precise..">
-	  </div>
-	  <div class="form-group">
-	    <label for="{{id}}-quantity">Quantity:</label>
-	    <input type="text" class="form-control" id="{{id}}-quantity" placeholder="How many?">
-	  </div>
-	  <div class="form-group">
-	    <label for="{{id}}-productType">Product type:</label>
-	    <select id="{{id}}-productType" class="form-control form-control-md">
-	  		<option>Select the product type..</option>
+		<img src="https://walmartar.vteximg.com.br/arquivos/ids/833981-1000-1000/Milanesa-De-Soja-Granja-Del-Sol-660-Gr-8-U-1-35620.jpg?v=636685826082700000" class="img-fluid img-thumbnail" alt="Responsive image" height="200" width="200">
+		 <div class="form-group">
+		   <label for="{{id}}-title">Tiltle:</label>
+		   <input type="text" class="form-control" id="{{id}}-title" aria-describedby="emailHelp" placeholder="Which product it's?">
+		   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		 </div>
+		 <div class="form-group">
+		   <label for="{{id}}-details">Details:</label>
+		   <input type="text" class="form-control" id="{{id}}-details" placeholder="Here, you can be more precise..">
+		 </div>
+		 <div class="form-group">
+		   <label for="{{id}}-quantity">Quantity:</label>
+		   <input type="text" class="form-control" id="{{id}}-quantity" placeholder="How many?">
+		 </div>
+		 <div class="form-group">
+		   <label for="{{id}}-productType">Product type:</label>
+		   <select id="{{id}}-productType" class="form-control form-control-md">
+		 		<option>Select the product type..</option>
 		</select>
-	  </div>
-	  <div class="form-group">
-	    <label for="{{id}}-brand">Brand:</label>
-	    <select id="{{id}}-brand" class="form-control form-control-md">
-	  		<option>Select brand..</option>
+		 </div>
+		 <div class="form-group">
+		   <label for="{{id}}-brand">Brand:</label>
+		   <select id="{{id}}-brand" class="form-control form-control-md">
+		 		<option>Select brand..</option>
 		</select>
-	  </div>
-	  <div class="form-check form-check-inline">
-	    <input type="checkbox" class="form-check-input" id="{{id}}-forVegan">
-	    <label class="form-check-label" for="{{id}}-forVegan">For vegan</label>
-	  </div>
-	  <div class="form-check form-check-inline">
-	    <input type="checkbox" class="form-check-input" id="{{id}}-forCeliac">
-	    <label class="form-check-label" for="{{id}}-forCeliac">For celiac</label>
-	  </div>
-	  <div class="form-check form-check-inline">
-	    <input type="checkbox" class="form-check-input" id="{{id}}-forDietetic">
-	    <label class="form-check-label" for="{{id}}-forDietetic">For dietetic</label>
-	  </div>
-	  <div class="form-check form-check-inline">
-	    <input type="checkbox" class="form-check-input" id="{{id}}-forVegetarian">
-	    <label class="form-check-label" for="{{id}}-forVegetarian">For vegetarian</label>
-	  </div>
+		 </div>
+		 <div class="form-check form-check-inline">
+		   <input type="checkbox" class="form-check-input" id="{{id}}-forVegan">
+		   <label class="form-check-label" for="{{id}}-forVegan">For vegan</label>
+		 </div>
+		 <div class="form-check form-check-inline">
+		   <input type="checkbox" class="form-check-input" id="{{id}}-forCeliac">
+		   <label class="form-check-label" for="{{id}}-forCeliac">For celiac</label>
+		 </div>
+		 <div class="form-check form-check-inline">
+		   <input type="checkbox" class="form-check-input" id="{{id}}-forDietetic">
+		   <label class="form-check-label" for="{{id}}-forDietetic">For dietetic</label>
+		 </div>
+		 <div class="form-check form-check-inline">
+		   <input type="checkbox" class="form-check-input" id="{{id}}-forVegetarian">
+		   <label class="form-check-label" for="{{id}}-forVegetarian">For vegetarian</label>
+		 </div>
 	  <hr>
 	  <button id="{{id}}-btnSubmit" type="button" class="btn btn-primary">Submit</button>
 	  <button id="{{id}}-btnDisable" type="button" class="btn btn-danger" data-toggle="modal" data-target="#warningModal">Disable</button>
@@ -62,8 +63,8 @@
 		      <h5>¿Está seguro que desea inhabilitar el producto?</h5>
 		    </div>
 		    <div class="modal-footer">
-		      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-		      <button type="button" class="btn btn-danger">Sí</button>
+		      <button id="{{id}}-disableNObtn" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+		      <button id="{{id}}-disableYESbtn" type="button" class="btn btn-danger" data-dismiss="modal">Sí</button>
 		    </div>
 		  </div>
 		</div>

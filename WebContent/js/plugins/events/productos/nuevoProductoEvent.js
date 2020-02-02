@@ -37,6 +37,7 @@ NuevoProductoEvent.prototype.completeForm = function(productData){
 NuevoProductoEvent.prototype.initButtons = function(){
 	GETOBJETC.getJqObjectById(this.div,"btnSubmit").button().click($.proxy(this.createProduct,this));		
 	GETOBJETC.getJqObjectById(this.div,"btnCancel").button().click($.proxy(this.closePage,this));
+	GETOBJETC.getJqObjectById(this.div,"disableYESbtn").button().click($.proxy(this.disableProduct,this));
 };
 
 NuevoProductoEvent.prototype.createProduct = function(){
@@ -61,9 +62,8 @@ NuevoProductoEvent.prototype.createProduct = function(){
 
 NuevoProductoEvent.prototype.disableProduct = function(){
 	if(this.idToModified != 0 && this.idToModified){
-		
+		this.service.disableProduct(this.idToModified,$.proxy(this.closePage,this));
 	}
-		
 };
 
 NuevoProductoEvent.prototype.closePage = function(){

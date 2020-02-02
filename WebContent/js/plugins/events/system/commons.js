@@ -43,9 +43,11 @@ MESSAGE.showResponseMessage = function(response){
 	
 	$('#alertTitle').text(response.title);
 	
-	var listaMensajes = "";
-	for (var i = 0; i < response.messages.length; i++) {
-		listaMensajes += response.messages[i] + "<br>";
+	if(response.messages){
+		var listaMensajes = "";
+		for (var i = 0; i < response.messages.length; i++) {
+			listaMensajes += response.messages[i] + "<br>";
+		}
 	}
 	
 	$('#alertMessages').html(listaMensajes);

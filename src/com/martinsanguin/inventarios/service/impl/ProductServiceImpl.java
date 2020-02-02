@@ -133,6 +133,23 @@ public class ProductServiceImpl implements ProductService {
 		return dto;
 	}
 
+	@Transactional(readOnly = false)
+	@Override
+	public ResponseDTO disableProduct(Integer id) {
+		ResponseDTO response = null;
+		try {
+			Product product = this.productDao.findById(id);
+			product.setEnable(false);
+			this.productDao.merge(product);
+			response = new ResponseDTO("Producto inhbalitado",null,EnumResponseDTOLevel.OK);
+			
+		} catch (Exception e) {
+			response = new ResponseDTO("Ocurrió un error",null,EnumResponseDTOLevel.ERROR);
+		}
+		
+		return response;
+	}
+
 
 
 }

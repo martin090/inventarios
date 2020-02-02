@@ -37,6 +37,11 @@ public class ProductController {
 		return this.productService.updateProduct(product);
 	}
 	
+	@RequestMapping(value="/disable/{id}",method=RequestMethod.POST)
+	public @ResponseBody ResponseDTO disableProduct(@PathVariable Integer id){
+		return this.productService.disableProduct(id);
+	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public @ResponseBody ProductDTO findById(@PathVariable Integer id) {
 		return this.productService.getProductById(id);
